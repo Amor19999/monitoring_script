@@ -101,11 +101,10 @@
     sudo bash ./monitoring_script/loki/prom_loki.sh
     sudo bash ./monitoring_script/promet/prom.sh
     rm -fr graf
-```
 
-    На сервері де буде розміщатися доступ до Grafana та система 
+На сервері де буде розміщатися доступ до Grafana та система 
+
 ```
     git clone https://github.com/Amor19999/monitoring_script.git
     sudo bash ./monitoring_script/graf.sh
     rm -fr loki prome
-```
