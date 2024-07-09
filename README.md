@@ -1,5 +1,5 @@
-![Monitoring dashboard](scren/1.png)
-![Monitoring dashboard2](scren/2.png)
+
+![Monitoring dashboard](scren/Monitoring.jpg) Задум такий був
 Вміст папки loki
 
     prom_loki.sh: Скрипт для підйому Loki та Promtail.
@@ -26,7 +26,7 @@
 
 Вміст папки promet
 
-    prom.sh: Скрипт для підйому Prometheus та Alertmanager.
+    prom.sh: Скрипт для підйому Prometheus та NODE_EXP.
 
     .env_node: Зміни для Node_Exporter, розглянемо їх:
         NODE_EXPORTER_WEB_LISTEN_ADDRESS=: Адреса для прослуховування сервером Node_Exporter. За замовчуванням - 0.0.0.0:9100.
@@ -57,6 +57,7 @@
     entrypoint.sh: Створюється скриптом. Це скрипт, який виконується під час запуску Docker-контейнера.
 
     prometheus.yml.tpl: Створюється скриптом. Шаблонний файл конфігурації Prometheus, який містить змінні для динамічного налаштування.
+![Monitoring dashboard](scren/1.png)
 
 Вміст папки graf
 
@@ -88,3 +89,7 @@
         log-dashboard.json: Створюється скриптом. Це файл JSON, який визначає дашборд Grafana для відображення логів.
         Підкаталог imported: Створюється скриптом.
             11074.json: Створюється скриптом. Це файл JSON, який представляє конкретний дашборд для моніторинга, імпортований.
+![Monitoring dashboard2](scren/2.png)
+
+Надсилання сповіщень про критичні логи, чи падіння сервера до телеграм боту:
+![Logs dashboard](scren/4.png)
