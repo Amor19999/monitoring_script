@@ -1,5 +1,6 @@
 
-![Monitoring dashboard](scren/Monitoring.jpg) Задум такий був
+Задум такий був
+![Monitoring dashboard](scren/Monitoring.jpg) 
 Вміст папки loki
 
     prom_loki.sh: Скрипт для підйому Loki та Promtail.
@@ -93,3 +94,25 @@
 
 Надсилання сповіщень про критичні логи, чи падіння сервера до телеграм боту:
 ![Logs dashboard](scren/4.png)
+
+Встановлення:
+<button onclick="copyToClipboard('#code-block')">Copy Code</button>
+
+<pre id="code-block">
+```bash
+    git clone https://github.com/Amor19999/monitoring_script.git
+    sudo bash ./monitoring_script/loki/prom_loki.sh
+    sudo bash ./monitoring_script/promet/prom.sh
+    rm -fr graf
+</pre>
+```
+
+    На сервері де буде розміщатися доступ до Grafana та система 
+<button onclick="copyToClipboard('#code-block')">Copy Code</button>
+
+<pre id="code-block">
+```bash
+        git clone https://github.com/Amor19999/monitoring_script.git
+        sudo bash ./monitoring_script/graf.sh
+        rm -fr loki prome
+```
