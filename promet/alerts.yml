@@ -1,0 +1,39 @@
+groups:
+  - name: example
+    rules:
+      - alert: InstanceDown
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Instance {{ .instance }} down"
+          description: "{{ .instance }} of job {{ .job }} has been down for more than 5 minutes."
+
+  - name: example_cpu
+    rules:
+      - alert: HighCPULoad
+        expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU load on {{ .instance }}"
+          description: "CPU load is above 80% on {{ .instance }}."
+
+  - name: example_log
+    rules:
+      - alert: CriticalLogs
+        expr: sum(rate({job="varlogs", level=~"ERROR|WARN|CRITICAL"}[5m])) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical log entries detected"
+          description: |
+            {{ .instance }}
+            {{ range .Alerts }}
+            Path: {{ .Labels.__path__ }}
+            Date: {{ .StartsAt }}
+            Log: {{ .Annotations.log }}
+            {{ end }}
