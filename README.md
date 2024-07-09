@@ -95,18 +95,38 @@
 Надсилання сповіщень про критичні логи, чи падіння сервера до телеграм боту:
 ![Logs dashboard](scren/4.png)
 
-Встановлення:
-```
-    git clone https://github.com/Amor19999/monitoring_script.git
-    sudo bash ./monitoring_script/loki/prom_loki.sh
-    sudo bash ./monitoring_script/promet/prom.sh
-    rm -fr graf
+## Встановлення:
 
+### Перший крок
 
-На сервері де буде розміщатися доступ до Grafana та система 
+<button onclick="copyToClipboard('#code-block-1')">Copy Code</button>
 
+<pre id="code-block-1">
+git clone https://github.com/Amor19999/monitoring_script.git
+sudo bash ./monitoring_script/loki/prom_loki.sh
+sudo bash ./monitoring_script/promet/prom.sh
+rm -fr graf
+</pre>
 
-```
-    git clone https://github.com/Amor19999/monitoring_script.git
-    sudo bash ./monitoring_script/graf.sh
-    rm -fr loki prome
+На сервері, де буде розміщатися доступ до Grafana та система
+
+### Другий крок
+
+<button onclick="copyToClipboard('#code-block-2')">Copy Code</button>
+
+<pre id="code-block-2">
+git clone https://github.com/Amor19999/monitoring_script.git
+sudo bash ./monitoring_script/graf.sh
+rm -fr loki prome
+</pre>
+
+<script>
+function copyToClipboard(element) {
+  var temp = document.createElement("textarea");
+  document.body.appendChild(temp);
+  temp.value = document.querySelector(element).innerText;
+  temp.select();
+  document.execCommand("copy");
+  document.body.removeChild(temp);
+}
+</script>
