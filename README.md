@@ -1,7 +1,7 @@
 
-Задум такий був
+## Задум такий був
 ![Monitoring dashboard](scren/Monitoring.jpg) 
-Вміст папки loki
+## Вміст папки loki
 
     prom_loki.sh: Скрипт для підйому Loki та Promtail.
 
@@ -25,7 +25,7 @@
     promtail-config.yml: Створюється скриптом. Містить конфігурацію для Promtail, агента для збору логів та відправки їх у Loki. У ньому визначаються джерела логів, етапи обробки та налаштування клієнта для відправки логів.
 ![Logs dashboard](scren/3.png)
 
-Вміст папки promet
+## Вміст папки promet
 
     prom.sh: Скрипт для підйому Prometheus та NODE_EXP.
 
@@ -60,7 +60,7 @@
     prometheus.yml.tpl: Створюється скриптом. Шаблонний файл конфігурації Prometheus, який містить змінні для динамічного налаштування.
 ![Monitoring dashboard](scren/1.png)
 
-Вміст папки graf
+## Вміст папки graf
 
     graf.sh: Скрипт для підйому Alertmanager та Grafana.
 
@@ -92,43 +92,27 @@
             11074.json: Створюється скриптом. Це файл JSON, який представляє конкретний дашборд для моніторинга, імпортований.
 ![Monitoring dashboard2](scren/2.png)
 
-Надсилання сповіщень про критичні логи, чи падіння сервера до телеграм боту:
+## Надсилання сповіщень про критичні логи, чи падіння сервера до телеграм боту:
 ![Logs dashboard](scren/4.png)
-
-# monitoring_script
 
 ## Встановлення:
 
 ### Перший крок
 
-<button onclick="copyToClipboard('#code-block-1')">Copy Code</button>
-
-<pre id="code-block-1">
+\```bash
 git clone https://github.com/Amor19999/monitoring_script.git
 sudo bash ./monitoring_script/loki/prom_loki.sh
 sudo bash ./monitoring_script/promet/prom.sh
 rm -fr graf
-</pre>
+\```
 
 На сервері, де буде розміщатися доступ до Grafana та система
 
 ### Другий крок
 
-<button onclick="copyToClipboard('#code-block-2')">Copy Code</button>
-
-<pre id="code-block-2">
+\```bash
 git clone https://github.com/Amor19999/monitoring_script.git
 sudo bash ./monitoring_script/graf.sh
 rm -fr loki prome
-</pre>
+\```
 
-<script>
-function copyToClipboard(element) {
-  var temp = document.createElement("textarea");
-  document.body.appendChild(temp);
-  temp.value = document.querySelector(element).innerText;
-  temp.select();
-  document.execCommand("copy");
-  document.body.removeChild(temp);
-}
-</script>
