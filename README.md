@@ -1,6 +1,7 @@
-Вміст папки loki
 ![Monitoring dashboard](scren/1.png)
 ![Monitoring dashboard2](scren/2.png)
+Вміст папки loki
+
     prom_loki.sh: Скрипт для підйому Loki та Promtail.
 
     .env_loki: Зміни середовища для сервера LOKI, розглянемо їх:
