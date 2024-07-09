@@ -96,23 +96,16 @@
 ![Logs dashboard](scren/4.png)
 
 Встановлення:
-<button onclick="copyToClipboard('#code-block')">Copy Code</button>
-
-<pre id="code-block">
-```bash
+```
     git clone https://github.com/Amor19999/monitoring_script.git
     sudo bash ./monitoring_script/loki/prom_loki.sh
     sudo bash ./monitoring_script/promet/prom.sh
     rm -fr graf
-</pre>
 ```
 
     На сервері де буде розміщатися доступ до Grafana та система 
-<button onclick="copyToClipboard('#code-block')">Copy Code</button>
-
-<pre id="code-block">
-```bash
-        git clone https://github.com/Amor19999/monitoring_script.git
-        sudo bash ./monitoring_script/graf.sh
-        rm -fr loki prome
+```
+    git clone https://github.com/Amor19999/monitoring_script.git
+    sudo bash ./monitoring_script/graf.sh
+    rm -fr loki prome
 ```
