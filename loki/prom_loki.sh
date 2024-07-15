@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# Перевірка чи встановлений Docker
-if ! [ -x "$(command -v docker)" ]; then
-  echo "Docker не встановлений. Встановлення Docker..."
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  sh get-docker.sh
-  rm get-docker.sh
-  sudo systemctl start docker
-  sudo systemctl enable docker
-else
-  echo "Docker вже встановлений."
-fi
-if ! [ -x "$(command -v docker-compose)" ]; then
-  echo "Docker Compose не встановлений. Встановлення Docker Compose..."
-  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-else
-  echo "Docker Compose вже встановлений."
-fi
+# # Перевірка чи встановлений Docker
+# if ! [ -x "$(command -v docker)" ]; then
+#   echo "Docker не встановлений. Встановлення Docker..."
+#   curl -fsSL https://get.docker.com -o get-docker.sh
+#   sh get-docker.sh
+#   rm get-docker.sh
+#   sudo systemctl start docker
+#   sudo systemctl enable docker
+# else
+#   echo "Docker вже встановлений."
+# fi
+# if ! [ -x "$(command -v docker-compose)" ]; then
+#   echo "Docker Compose не встановлений. Встановлення Docker Compose..."
+#   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+#   sudo chmod +x /usr/local/bin/docker-compose
+#   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+# else
+#   echo "Docker Compose вже встановлений."
+# fi
 
 # Створення .env файлів для Promtail та Loki
 # cat <<EOF > .env_loki
@@ -139,8 +139,6 @@ EOF
 
 # Створення docker-compose.yml
 cat <<EOF > docker-compose.yml
-version: '3.8'
-
 services:
   loki:
     image: grafana/loki:latest
@@ -167,5 +165,5 @@ services:
 EOF
 
 # Запуск docker-compose
-docker-compose up -d
+docker compose up --build -d
 
