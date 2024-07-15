@@ -1,25 +1,25 @@
 #!/bin/bash
 
-# Перевірка чи встановлений Docker
-if ! [ -x "$(command -v docker)" ]; then
-  echo "Docker не встановлений. Встановлення Docker..."
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  sh get-docker.sh
-  rm get-docker.sh
-  sudo systemctl start docker
-  sudo systemctl enable docker
-else
-  echo "Docker вже встановлений."
-fi
+# # Перевірка чи встановлений Docker
+# if ! [ -x "$(command -v docker)" ]; then
+#   echo "Docker не встановлений. Встановлення Docker..."
+#   curl -fsSL https://get.docker.com -o get-docker.sh
+#   sh get-docker.sh
+#   rm get-docker.sh
+#   sudo systemctl start docker
+#   sudo systemctl enable docker
+# else
+#   echo "Docker вже встановлений."
+# fi
 source .env_pro
-if ! [ -x "$(command -v docker-compose)" ]; then
-  echo "Docker Compose не встановлений. Встановлення Docker Compose..."
-  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-else
-  echo "Docker Compose вже встановлений."
-fi
+# if ! [ -x "$(command -v docker-compose)" ]; then
+#   echo "Docker Compose не встановлений. Встановлення Docker Compose..."
+#   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+#   sudo chmod +x /usr/local/bin/docker-compose
+#   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+# else
+#   echo "Docker Compose вже встановлений."
+# fi
 
 # Наступний файл для  Налаштування правил сповіщень у Prometheus
 cat <<EOF > alerts.yml
@@ -44,7 +44,7 @@ groups:
           severity: critical
         annotations:
           summary: "Critical log entries detected"
-          description: "There are critical log entries in the last 5 minutes."
+          description: "There are critical log entries in the last 5 minutes.\n\nLog details: {{ $labels }}"
 
   - name: example_cpu
     rules:
