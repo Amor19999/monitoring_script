@@ -182,8 +182,6 @@ EOF
 
 # Створення docker-compose.yml
 cat <<EOF > docker-compose.yml
-version: '3.8'
-
 services:
   prometheus:
     build: .
@@ -222,4 +220,4 @@ volumes:
 EOF
 
 # Запуск docker-compose
- docker-compose up -d --build
+ docker compose up -d --build
