@@ -11,6 +11,11 @@
 # else
 #   echo "Docker вже встановлений."
 # fi
+# Перевірка існування файлу .env_pro
+if [ ! -f ./.env_pro ]; then
+  echo "Файл .env_pro не знайдено!"
+  exit 1
+fi
 source .env_pro
 # if ! [ -x "$(command -v docker-compose)" ]; then
 #   echo "Docker Compose не встановлений. Встановлення Docker Compose..."
@@ -44,7 +49,7 @@ groups:
           severity: critical
         annotations:
           summary: "Critical log entries detected"
-          description: "There are critical log entries in the last 5 minutes.\n\nLog details: {{ $labels }}"
+          description: "There are critical log entries in the last 5 minutes."
 
   - name: example_cpu
     rules:
