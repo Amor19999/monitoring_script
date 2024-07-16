@@ -56,7 +56,7 @@ scrape_configs:
           - localhost
         labels:
           job: varlogs
-          __path__: /var/log/messages/*
+          __path__: ${LOG_PATH}/*
 
     pipeline_stages:
       - match:
@@ -165,5 +165,5 @@ services:
 EOF
 
 # Запуск docker-compose
-docker compose up --build -d
+docker compose up -d
 
