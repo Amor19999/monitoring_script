@@ -56,14 +56,14 @@ scrape_configs:
           - localhost
         labels:
           job: varlogs
-          __path__: ${LOG_PATH}/*
+          __path__: /var/lib/docker/volumes/tbots-vm_volume_log/_data/*.log
 
     pipeline_stages:
       - match:
           selector: '{job="varlogs"}'
           stages:
             - regex:
-                expression: '.*(ERROR|WARN|CRITICAL).*'
+                expression: '(?i).*(ERROR|WARN|CRITICAL).*'
             - timestamp:
                 source: time
                 format: RFC3339
